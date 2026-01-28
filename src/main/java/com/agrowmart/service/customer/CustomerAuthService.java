@@ -72,7 +72,8 @@ public class CustomerAuthService {
         customer.setActive(true);
 
         Customer saved = customerRepository.save(customer);
-        sendOtp(phone, OtpPurpose.PHONE_VERIFY); // Auto-send OTP
+        
+//        sendOtp(phone, OtpPurpose.PHONE_VERIFY); // Auto-send OTP
         return saved;
     }
 

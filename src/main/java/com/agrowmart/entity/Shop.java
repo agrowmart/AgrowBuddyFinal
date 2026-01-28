@@ -39,7 +39,7 @@ public class Shop {
  @Column(length = 500)
  private String shopLicensePhoto;           // URL as String
 
- @Column(length = 100)
+ @Column(length = 1000)
  private String workingHours;
 
  @Column(length = 1000)
