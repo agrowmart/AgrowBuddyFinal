@@ -29,10 +29,6 @@ this.doctorProfileRepository = doctorProfileRepository;
 
 this.userRepository = userRepository;
 
-
-
-
-
 }
     // Create or Update (Upsert)
     public DoctorProfileResponseDTO createOrUpdateProfile(Long userId, DoctorProfileCreateDTO dto) {

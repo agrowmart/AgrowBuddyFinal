@@ -1,5 +1,3 @@
-// src/main/java/com/agrowmart/service/RatingService.java
-
 package com.agrowmart.service;
 
 import com.agrowmart.dto.auth.rating.RatingCreateRequestDTO;

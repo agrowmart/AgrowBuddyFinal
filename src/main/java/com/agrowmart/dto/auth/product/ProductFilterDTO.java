@@ -1,6 +1,5 @@
 package com.agrowmart.dto.auth.product;
 
-
 import java.util.List;
 
 public record ProductFilterDTO(

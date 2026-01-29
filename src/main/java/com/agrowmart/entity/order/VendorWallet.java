@@ -1,6 +1,5 @@
 package com.agrowmart.entity.order;
 
-
 import jakarta.persistence.*;
 
 @Entity

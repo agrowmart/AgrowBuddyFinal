@@ -1,9 +1,6 @@
 package com.agrowmart.entity;
 
 
-
-
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 

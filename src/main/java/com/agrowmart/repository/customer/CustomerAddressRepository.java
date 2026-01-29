@@ -1,8 +1,5 @@
 package com.agrowmart.repository.customer;
 
-//CustomerAddressRepository.java
-
-
 import com.agrowmart.entity.customer.Customer;
 import com.agrowmart.entity.customer.CustomerAddress;
 import org.springframework.data.jpa.repository.JpaRepository;

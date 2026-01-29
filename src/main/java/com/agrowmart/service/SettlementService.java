@@ -33,10 +33,9 @@ public class SettlementService {
         this.razorpayService = razorpayService;
     }
 
-    /**
-     * Daily cron job: Runs every day at 2:00 AM
-     * Processes settlements for orders delivered 7+ days ago
-     */
+     // Daily cron job: Runs every day at 2:00 AM
+     // Processes settlements for orders delivered 7+ days ago
+     
     @Scheduled(cron = "0 0 2 * * ?")
     @Transactional
     public void processDailySettlements() {

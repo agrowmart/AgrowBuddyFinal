@@ -24,7 +24,7 @@ public class FirebaseConfig {
             String base64Credentials = System.getenv("FIREBASE_CREDENTIALS_JSON");
 
             if (base64Credentials == null || base64Credentials.isBlank()) {
-                System.out.println("⚠️ Firebase credentials not found, skipping Firebase init");
+                System.out.println("Firebase credentials not found, skipping Firebase init");
                 return; // <-- app will still start
             }
 

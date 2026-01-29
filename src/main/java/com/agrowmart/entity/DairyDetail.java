@@ -22,8 +22,7 @@ public class DairyDetail {
 	private Product product;
 	
     private String quantity;
-  
-    // Changes :- Ankita ADD MinPrice & MaxPrice
+
     
     @Column(name = "min_price", precision = 10, scale = 2)
     private BigDecimal minPrice;

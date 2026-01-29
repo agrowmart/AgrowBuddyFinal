@@ -1,5 +1,3 @@
-// src/main/java/com/agrowmart/service/customer/CustomerAuthService.java
-
 package com.agrowmart.service.customer;
 
 import com.agrowmart.dto.auth.JwtResponse;
@@ -139,10 +137,6 @@ public class CustomerAuthService {
         // Send via Fast2SMS (Twilio removed)
         fast2SmsService.sendOtp(normalizedPhone, code, purpose.name());
     }
-    
-    
-    
-    
 
     @Transactional
     public void verifyOtp(VerifyOtpRequestDto req) {
@@ -202,12 +196,7 @@ public class CustomerAuthService {
         if (!cleaned.matches("^[6-9]\\d{9}$")) throw new IllegalArgumentException("Invalid mobile number");
         return "+91" + cleaned;
     }
-    
-    
-    
-    
-  //----------------------------------------
-    
+
     
     @Transactional
     public Customer updateProfile(

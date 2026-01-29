@@ -1,6 +1,5 @@
-
-
 package com.agrowmart.service;
+
 import com.agrowmart.dto.auth.*;
 
 import com.agrowmart.dto.auth.customer.CustomerRegisterRequest;
@@ -60,7 +59,7 @@ public class AuthService {
         fixLegacyPhoneNumbers();
         // Removed Twilio.init() — no longer needed
     }
-    /* ------------------------------------------------- AUTO-FIX LEGACY PHONES ------------------------------------------------- */
+    /* ------------ AUTO-FIX LEGACY PHONES-------------------- */
     @Transactional
     public void fixLegacyPhoneNumbers() {
         List<User> users = userRepo.findAll();
@@ -83,7 +82,7 @@ public class AuthService {
             System.out.println("TOTAL LEGACY PHONES FIXED: " + fixed);
         }
     }
-    /* ------------------------------------------------- REGISTER ------------------------------------------------- */
+    /* ------------------ REGISTER ------------------ */
     @Transactional
     public User register(RegisterRequest r) {
      String name = r.name() != null ? r.name().trim() : "";
@@ -200,7 +199,7 @@ public class AuthService {
         return userRepo.save(user);
     }
        
-    /* ------------------------------------------------- SEND OTP ------------------------------------------------- */
+    /* ------------------------ SEND OTP ---------------------- */
     @Transactional
     public void sendOtp(OtpRequest req) {
         String normalizedPhone = normalizePhone(req.phone());
@@ -256,7 +255,7 @@ public class AuthService {
             System.out.println("PASSWORD SUCCESSFULLY RESET for: " + normalizedPhone);
         }
     }
-    /* ------------------------------------------------- NORMALIZE PHONE ------------------------------------------------- */
+    /* --------------------------- NORMALIZE PHONE ------------------------- */
     private String normalizePhone(String phone) {
         if (phone == null || phone.isBlank()) {
             throw new IllegalArgumentException("Phone cannot be empty");
@@ -272,7 +271,7 @@ public class AuthService {
         }
         return "+91" + cleaned;
     }
-    /* ------------------------------------------------- LOGIN ------------------------------------------------- */
+    /* -------------------------- LOGIN -------------------------- */
     public JwtResponse login(LoginRequest req, String fcmTokenFromFrontend) {
         String input = req.login().trim();
         Optional<User> userOpt = userRepo.findByEmail(input);
@@ -297,8 +296,7 @@ public class AuthService {
         return login(req, null);
     }
    
-   
- //---------------------------------------------------
+
     private String normalizePhoneTo10Digits(String phone) {
         if (phone == null || phone.isBlank()) throw new IllegalArgumentException("Phone required");
         String cleaned = phone.replaceAll("[^0-9]", "");
@@ -312,7 +310,7 @@ public class AuthService {
         }
         return cleaned;
     }
-    /* ------------------------------------------------- FORGOT PASSWORD ------------------------------------------------- */
+    /* --------------------------- FORGOT PASSWORD ----------------------------- */
     @Transactional
     public void forgotPassword(String phone) {
         String normalized = normalizePhone(phone);
@@ -321,7 +319,7 @@ public class AuthService {
         }
         sendOtp(new OtpRequest(normalized, OtpPurpose.FORGOT_PASSWORD));
     }
-    /* ------------------------------------------------- UPDATE PROFILE ------------------------------------------------- */
+    /* --------------------------------- UPDATE PROFILE ---------------------------------- */
    
     @Transactional
     public User updateProfile(UpdateProfileRequest r, User user) {
@@ -367,7 +365,7 @@ public class AuthService {
         return userRepo.save(user);
     }
    
-    //-------------------------------
+ 
     public User getCurrentUser(@AuthenticationPrincipal User currentUser) {
         if (currentUser == null) throw new IllegalArgumentException("Invalid token");
         return userRepo.findById(currentUser.getId())
@@ -394,10 +392,6 @@ public class AuthService {
             throw new RuntimeException("Failed to upload photo: " + e.getMessage(), e);
         }
     }
-    
-    
-    
-    
     
     // ============= FARMER ONLY METHODS (NO DUPLICATES) =============
     @Transactional

@@ -1,5 +1,3 @@
-// src/main/java/com/agrowmart/entity/customer/Customer.java
-
 package com.agrowmart.entity.customer;
 
 import jakarta.persistence.*;
@@ -107,10 +105,8 @@ public class Customer {
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
     
     
-    
-    //----------
  // In Customer.java - ADD THIS FIELD
- // In Customer.java – Change this line only
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<CustomerAddress> addresses = new ArrayList<>();
     // ADD GETTER (this is what was missing!)

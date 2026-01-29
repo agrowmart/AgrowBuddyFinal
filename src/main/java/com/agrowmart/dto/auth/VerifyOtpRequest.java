@@ -1,4 +1,3 @@
-
 package com.agrowmart.dto.auth;
 
 import com.agrowmart.enums.OtpPurpose;

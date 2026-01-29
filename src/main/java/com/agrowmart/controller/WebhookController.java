@@ -16,11 +16,11 @@ import com.agrowmart.util.RazorpaySignatureUtil;
 public class WebhookController {
 
     private final RazorpayService razorpayService;
-    private final RazorpaySignatureUtil signatureUtil;  // ← Add this field
+    private final RazorpaySignatureUtil signatureUtil;  
 
     public WebhookController(RazorpayService razorpayService, RazorpaySignatureUtil signatureUtil) {
         this.razorpayService = razorpayService;
-        this.signatureUtil = signatureUtil;  // ← Inject it
+        this.signatureUtil = signatureUtil;  
     }
 
     @PostMapping("/razorpay")
@@ -28,7 +28,6 @@ public class WebhookController {
             @RequestBody String payload,
             @RequestHeader("X-Razorpay-Signature") String signature) {
 
-        // Use the injected instance method (non-static)
         if (!signatureUtil.verify(payload, signature)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Signature");
         }

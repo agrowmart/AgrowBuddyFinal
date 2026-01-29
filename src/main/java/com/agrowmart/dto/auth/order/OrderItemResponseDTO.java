@@ -1,15 +1,3 @@
-//package com.agrowmart.dto.auth.order;
-//
-//import java.math.BigDecimal;
-//
-//public record OrderItemResponseDTO(
-//        Long id,
-//        Long productId,
-//        int quantity,
-//        BigDecimal pricePerUnit,
-//        BigDecimal totalPrice
-//) {}
-
 package com.agrowmart.dto.auth.order;
 
 import java.math.BigDecimal;

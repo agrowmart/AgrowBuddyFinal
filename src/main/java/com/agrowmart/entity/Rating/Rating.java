@@ -1,7 +1,5 @@
 package com.agrowmart.entity.Rating;
 
-
-
 import jakarta.persistence.*;
 import java.util.Date;
 

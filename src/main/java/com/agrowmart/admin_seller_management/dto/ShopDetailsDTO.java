@@ -106,7 +106,7 @@ public class ShopDetailsDTO {
     private boolean active;
     
     private String vendorType;
-    // getters & setters
+   
 
 	public String getVendorType() {
 		return vendorType;
@@ -124,5 +124,4 @@ public class ShopDetailsDTO {
 		this.gstCertificateNumber = gstCertificateNumber;
 	}
 
-    // getters & setters
 }

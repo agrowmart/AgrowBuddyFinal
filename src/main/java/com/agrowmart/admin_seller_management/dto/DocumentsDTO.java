@@ -24,18 +24,6 @@ public class DocumentsDTO {
     private DocumentStatus udyamStatus;
     private DocumentStatus shopLicensePhotoStatus;
 
-//    private String ShopLicense;
-
-    // ================= GETTERS & SETTERS =================
-
-//    public String getShopLicense() {
-//		return ShopLicense;
-//	}
-//
-//	public void setShopLicense(String shopLicense) {
-//		ShopLicense = shopLicense;
-//	}
-
 	public DocumentStatus getShopLicensePhotoStatus() {
 		return shopLicensePhotoStatus;
 	}

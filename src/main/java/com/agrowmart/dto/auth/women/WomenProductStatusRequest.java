@@ -1,7 +1,5 @@
 package com.agrowmart.dto.auth.women;
 
-
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 

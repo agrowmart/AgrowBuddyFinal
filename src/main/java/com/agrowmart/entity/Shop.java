@@ -1,7 +1,5 @@
 package com.agrowmart.entity;
 
-
-
 import com.agrowmart.admin_seller_management.enums.DocumentStatus;
 import com.agrowmart.entity.User;
 import jakarta.persistence.*;
@@ -180,8 +178,7 @@ public class Shop {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	//Added By Aakanksha - 19/01/2026
+
 		@Enumerated(EnumType.STRING)
 		private DocumentStatus shopLicensePhotoStatus = DocumentStatus.PENDING;
 

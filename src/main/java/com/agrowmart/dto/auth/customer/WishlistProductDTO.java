@@ -1,8 +1,5 @@
 package com.agrowmart.dto.auth.customer;
 
-//src/main/java/com/agrowmart/dto/customer/WishlistProductDTO.java
-
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 

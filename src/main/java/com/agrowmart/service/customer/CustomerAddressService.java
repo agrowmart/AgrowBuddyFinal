@@ -1,5 +1,3 @@
-// src/main/java/com/agrowmart/service/customer/CustomerAddressService.java
-
 package com.agrowmart.service.customer;
 
 import com.agrowmart.dto.auth.customer.AddressRequest;

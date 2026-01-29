@@ -1,6 +1,6 @@
-//// Author Vishal Sapkal 
-////Date :- 10-12-2025
-//// this is not work because payment  for google console subscraption - 15 k 
+// Vishal Sapkal 
+//Date :- 10-12-2025
+// It will not work due to payment for google console subscraption - 15 k 
 //package com.agrowmart.config;
 //
 //import com.agrowmart.dto.auth.JwtResponse;

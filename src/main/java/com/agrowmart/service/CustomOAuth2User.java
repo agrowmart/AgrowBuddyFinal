@@ -1,7 +1,3 @@
-// Author Vishal Sapkal 
-//Date :- 10-12-2025
-// this is not work because payment  for google console subscraption - 15 k 
-
 package com.agrowmart.service;
 
 import com.agrowmart.entity.User;

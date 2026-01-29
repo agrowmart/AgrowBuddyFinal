@@ -1,6 +1,5 @@
 package com.agrowmart.dto.auth.rating;
 
-
 import java.util.Map;
 import java.util.List;
 

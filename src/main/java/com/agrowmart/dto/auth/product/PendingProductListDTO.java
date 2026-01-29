@@ -1,4 +1,3 @@
-// com.agrowmart.dto.auth.product.PendingProductListDTO.java
 package com.agrowmart.dto.auth.product;
 
 import java.util.List;

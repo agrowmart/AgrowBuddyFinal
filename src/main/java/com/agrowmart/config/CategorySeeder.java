@@ -10,10 +10,10 @@ import com.agrowmart.repository.CategoryRepository;
 @Component
 public class CategorySeeder implements CommandLineRunner {
 
-    // Correct field name → lowercase 'c'
+   
     private final CategoryRepository categoryRepo;
-    public CategorySeeder(CategoryRepository categoryRepo) {  // ERROR 2
-        this.categoryRepo = categoryRepo;                // Same galat name
+    public CategorySeeder(CategoryRepository categoryRepo) {  
+        this.categoryRepo = categoryRepo;               
     }
 
     @Override
@@ -24,12 +24,12 @@ public class CategorySeeder implements CommandLineRunner {
     }
 
     private void createRootIfNotExists(String slug, String name) {
-        if (categoryRepo.findBySlug(slug).isEmpty()) {  // ab sahi variable
+        if (categoryRepo.findBySlug(slug).isEmpty()) {  
             Category root = new Category();
             root.setName(name);
             root.setSlug(slug);
             root.setParent(null);
-            categoryRepo.save(root);                   // ab sahi variable
+            categoryRepo.save(root);            
             System.out.println("Root category created: " + name + " (" + slug + ")");
         }
     }

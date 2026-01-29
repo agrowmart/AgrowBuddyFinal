@@ -1,5 +1,3 @@
-// src/main/java/com/agrowmart/service/ProductSpecifications.java
-
 package com.agrowmart.service;
 
 import com.agrowmart.entity.Product;

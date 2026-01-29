@@ -1,5 +1,3 @@
-// src/main/java/com/agrowmart/controller/RatingController.java
-
 package com.agrowmart.controller;
 
 import com.agrowmart.dto.auth.rating.RatingCreateRequestDTO;

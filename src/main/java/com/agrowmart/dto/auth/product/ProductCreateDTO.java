@@ -28,15 +28,10 @@ public record ProductCreateDTO(
     
     Long categoryId,
     List<MultipartFile> images,
-
-    // Vendor Registration Info (saved per product)
    
     Double stockQuantity,
   
     String shelfLife,
-   
-    
-    
     
     // Vegetable Fields
     String vegWeight,
@@ -55,7 +50,7 @@ public record ProductCreateDTO(
     String dairyUsageInfo,
     String dairyUnit,
     String dairyStorage,
-    // Changes :- Ankita 
+
     BigDecimal dairyMinPrice,   // ⭐ ADD
     BigDecimal dairyMaxPrice,   // ⭐ ADD
 
@@ -73,7 +68,7 @@ public record ProductCreateDTO(
     String meatPackagingType,
     String meatDisclaimer,
     String meatRefundPolicy,
-    // Chnages- Ankita 
+
     BigDecimal meatMinPrice,   // ⭐ ADD
     BigDecimal meatMaxPrice  // ⭐ ADD
 ) {}

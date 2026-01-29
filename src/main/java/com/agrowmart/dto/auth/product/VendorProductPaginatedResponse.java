@@ -1,5 +1,3 @@
-// src/main/java/com/agrowmart/dto/auth/product/VendorProductPaginatedResponse.java
-
 package com.agrowmart.dto.auth.product;
 
 import java.util.List;

@@ -1,4 +1,3 @@
-
 package com.agrowmart.dto.auth.Notification;
 
 public record NotificationRequest(

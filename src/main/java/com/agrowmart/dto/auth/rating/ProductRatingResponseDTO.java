@@ -1,7 +1,5 @@
 package com.agrowmart.dto.auth.rating;
 
-
-
 import java.util.Date;
 
 public record ProductRatingResponseDTO(

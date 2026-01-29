@@ -1,6 +1,5 @@
 package com.agrowmart.dto.auth.shop;
 
-
 import java.time.LocalTime;
 
 public record ShopResponse(

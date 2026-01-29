@@ -1,7 +1,5 @@
 package com.agrowmart.dto.auth.farmer;
 
-
-
 public record FarmerProfileRequest(
     String name,
     String phone,

@@ -1,4 +1,3 @@
-// com.agrowmart.dto.auth.product.ProductApprovalRequest.java
 package com.agrowmart.dto.auth.product;
 
 public record ProductApprovalRequest(

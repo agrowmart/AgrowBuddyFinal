@@ -1,7 +1,6 @@
 package com.agrowmart.service;
 
 
-
 import com.agrowmart.dto.auth.shop.ShopRequest;
 import com.agrowmart.dto.auth.shop.ShopResponse;
 import com.agrowmart.entity.Shop;
@@ -26,7 +25,7 @@ public class ShopService {
  private final ShopRepository shopRepository;
  private final CloudinaryService cloudinaryService; // ✅ ONLY cloudinary
  
-// ✅ MANUAL CONSTRUCTOR (REQUIRED)
+// MANUAL CONSTRUCTOR (REQUIRED)
  public ShopService(ShopRepository shopRepository,
                     CloudinaryService cloudinaryService) {
      this.shopRepository = shopRepository;
@@ -63,7 +62,7 @@ public class ShopService {
      shop.setOpensAt(req.opensAt());
      shop.setClosesAt(req.closesAt());
 
-     // ✅ CLOUDINARY UPLOAD
+     //  CLOUDINARY UPLOAD
      shop.setShopPhoto(uploadIfPresent(req.shopPhoto()));
      shop.setShopCoverPhoto(uploadIfPresent(req.shopCoverPhoto()));
      shop.setShopLicensePhoto(uploadIfPresent(req.shopLicensePhoto()));
@@ -91,7 +90,7 @@ public class ShopService {
      shop.setOpensAt(req.opensAt());
      shop.setClosesAt(req.closesAt());
 
-     // ✅ Replace image only if new one is provided
+     //  Replace image only if new one is provided
      if (req.shopPhoto() != null && !req.shopPhoto().isEmpty()) {
          if (shop.getShopPhoto() != null) {
              cloudinaryService.delete(shop.getShopPhoto());
@@ -126,7 +125,7 @@ public class ShopService {
      Shop shop = shopRepository.findByUser(user)
              .orElseThrow(() -> new RuntimeException("Shop not found"));
 
-     // 🔥 Delete images from Cloudinary
+     //  Delete images from Cloudinary
      if (shop.getShopPhoto() != null) {
          cloudinaryService.delete(shop.getShopPhoto());
      }
@@ -139,7 +138,6 @@ public class ShopService {
 
      shopRepository.delete(shop);
  }
-
 
  // ===================== CLOUDINARY HELPER =====================
  private String uploadIfPresent(MultipartFile file) throws IOException {
@@ -197,11 +195,6 @@ public class ShopService {
      );
  }
 
- 
- 
- //------------
- 
- 
 //Add these methods to your existing ShopService class
 
 public List<ShopResponse> getPopularShops() {

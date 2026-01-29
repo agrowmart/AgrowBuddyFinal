@@ -1,6 +1,5 @@
 package com.agrowmart.entity;
 
-
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -19,10 +18,6 @@ public class FarmerProfile {
 
  @Column(name = "state", length = 100)
  private String state;
- 
- 
-
- 
  
  
  @Column(name = "bank_name", length = 100)

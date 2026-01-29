@@ -1,6 +1,5 @@
 package com.agrowmart.entity.order;
 
-
 import com.agrowmart.entity.User;
 import com.agrowmart.entity.customer.Customer;
 import com.agrowmart.entity.order.Order;

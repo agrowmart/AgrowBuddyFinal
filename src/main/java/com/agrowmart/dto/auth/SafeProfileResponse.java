@@ -1,4 +1,3 @@
-// src/main/java/com/agrowmart/dto/auth/SafeProfileResponse.java
 package com.agrowmart.dto.auth;
 
 import com.agrowmart.entity.User;

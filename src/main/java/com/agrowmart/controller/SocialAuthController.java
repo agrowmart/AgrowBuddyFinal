@@ -1,10 +1,4 @@
-// Author Vishal Sapkal 
-//Date :- 10-12-2025
-// this is not work because payment  for google console subscraption - 15 k 
-
 package com.agrowmart.controller;
-
-
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,5 @@
 package com.agrowmart.entity;
 
-
 import com.agrowmart.enums.SubscriptionPlan;
 import jakarta.persistence.*;
 

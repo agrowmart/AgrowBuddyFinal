@@ -1,4 +1,3 @@
-// src/main/java/com/agrowmart/entity/customer/CustomerAddress.java
 package com.agrowmart.entity.customer;
 
 import jakarta.persistence.*;
@@ -90,9 +89,7 @@ public class CustomerAddress {
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     
-    
-    
-    //------
+
     @Column(name = "state", length = 100, nullable = false)
     private String state;
 

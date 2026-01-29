@@ -11,7 +11,7 @@ public record ProductUpdateDTO(
   
 
     // Images
-    List<MultipartFile> images ,        // renamed from newImages → matches frontend
+    List<MultipartFile> images ,        
     List<String> removeImageUrls,
 
     String shelfLife,

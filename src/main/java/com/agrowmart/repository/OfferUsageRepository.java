@@ -1,7 +1,5 @@
 package com.agrowmart.repository;
 
-//src/main/java/com/agrowmart/repository/OfferUsageRepository.java
-
 import com.agrowmart.entity.User;
 import com.agrowmart.entity.customer.Customer;
 import com.agrowmart.entity.order.Offer;

@@ -1,8 +1,5 @@
 package com.agrowmart.dto.auth;
 
-//src/main/java/com/agrowmart/dto/auth/FullKycResponse.java
-
-
 import com.agrowmart.entity.User;
 
 public record FullKycResponse(

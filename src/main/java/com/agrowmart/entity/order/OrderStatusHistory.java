@@ -1,7 +1,5 @@
 package com.agrowmart.entity.order;
 
-
-
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

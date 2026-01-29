@@ -1,7 +1,5 @@
 package com.agrowmart.dto.auth.doctor;
 
-
-
 import java.math.BigDecimal;
 
 public record DoctorProfileCreateDTO(

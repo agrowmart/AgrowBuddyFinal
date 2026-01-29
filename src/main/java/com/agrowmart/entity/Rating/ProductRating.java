@@ -1,7 +1,5 @@
 package com.agrowmart.entity.Rating;
 
-
-
 import com.agrowmart.entity.Product;
 import com.agrowmart.entity.WomenProduct;
 import com.agrowmart.entity.customer.Customer;

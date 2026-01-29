@@ -1,7 +1,5 @@
 package com.agrowmart.controller;
 
-//src/main/java/com/agrowmart/controller/CustomerWishlistController.java
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -150,9 +150,9 @@ public abstract class BaseAgriProduct {
 
     // ====================== JSON List<String> Helpers ======================
 
-    /**
-     * Get image URLs as List<String> – used in service layer
-     */
+    
+    // Get image URLs as List<String> – used in service layer
+    
     @Transient
     public List<String> getAgriImageUrls() {
         if (AgriimageUrl == null || AgriimageUrl.isBlank()) {
@@ -167,9 +167,9 @@ public abstract class BaseAgriProduct {
         }
     }
 
-    /**
-     * Set image URLs from List<String> – automatically converts to JSON
-     */
+    
+     // Set image URLs from List<String> – automatically converts to JSON
+     
     public void setAgriImageUrls(List<String> urls) {
         if (urls == null || urls.isEmpty()) {
             this.AgriimageUrl = null;
@@ -181,8 +181,7 @@ public abstract class BaseAgriProduct {
             }
         }
     }
-    
- //----------------
+
     
     @Column(name = "visible_to_customers", nullable = false, columnDefinition = "TINYINT(1) DEFAULT 1")
     private boolean visibleToCustomers = true;

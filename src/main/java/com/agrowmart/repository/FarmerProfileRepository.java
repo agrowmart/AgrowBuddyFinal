@@ -1,7 +1,5 @@
 package com.agrowmart.repository;
 
-
-
 import com.agrowmart.entity.FarmerProfile;
 import com.agrowmart.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

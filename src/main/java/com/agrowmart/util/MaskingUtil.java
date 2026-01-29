@@ -1,7 +1,5 @@
 package com.agrowmart.util;
 
-//src/main/java/com/agrowmart/util/MaskingUtil.java
-
 public class MaskingUtil {
 
  public static String maskAadhaar(String aadhaar) {

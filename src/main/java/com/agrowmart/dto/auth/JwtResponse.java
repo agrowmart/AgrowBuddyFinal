@@ -1,4 +1,3 @@
-// src/main/java/com/example/demo/dto/auth/JwtResponse.java
 package com.agrowmart.dto.auth;
 
 import java.time.LocalDateTime;

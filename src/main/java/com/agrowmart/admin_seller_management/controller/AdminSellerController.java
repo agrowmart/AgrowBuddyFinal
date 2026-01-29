@@ -57,8 +57,7 @@ public class AdminSellerController {
     public ResponseEntity<ApiResponseDTO<?>> approve(
             @PathVariable Long id) {
 
-//        verificationService.approveVendor(id);
-    	// 21 Jan 
+
     	sellerService.approveVendor(id);
 
         return ResponseEntity.ok(
@@ -66,35 +65,6 @@ public class AdminSellerController {
         );
     }
 
-//    @PutMapping("/{id}/reject")
-//    public ResponseEntity<ApiResponseDTO<?>> reject(
-//            @PathVariable Long id,
-//            @Valid @RequestBody DocumentVerificationRequestDTO request) {
-//
-//        verificationService.rejectVendor(id, request);
-//        return ResponseEntity.ok(
-//                new ApiResponseDTO<>(true, "Vendor rejected successfully")
-//        );
-//    }
-//    @PutMapping("/{id}/reject")
-//    public ResponseEntity<ApiResponseDTO<?>> reject(
-//            @PathVariable Long id,
-//            @Valid @RequestBody DocumentVerificationRequestDTO request) {
-//
-//        String reason;
-//
-//        if (request.getRejectReason() == RejectReason.OTHER) {
-//            reason = request.getCustomReason();
-//        } else {
-//            reason = request.getRejectReason().name(); // enum → string
-//        }
-//
-//        sellerService.rejectVendor(id, reason);
-//
-//        return ResponseEntity.ok(
-//                new ApiResponseDTO<>(true, "Vendor rejected successfully")
-//        );
-//    }
     @PutMapping("/{id}/reject")
     public ResponseEntity<ApiResponseDTO<?>> reject(
             @PathVariable Long id,

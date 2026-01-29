@@ -1,7 +1,5 @@
 package com.agrowmart.admin_seller_management.enums;
 
-
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
@@ -22,13 +20,11 @@ public enum AccountStatus {
         return label;
     }
 
-    // Used when returning response to frontend
     @JsonValue
     public String toValue() {
         return this.name();
     }
 
-    // Used when receiving request param or request body
     @JsonCreator
     public static AccountStatus fromValue(String value) {
         for (AccountStatus status : values()) {

@@ -1,7 +1,5 @@
 package com.agrowmart.dto.auth.subscription;
 
-//SubscriptionResponse.java
-
 import com.agrowmart.enums.SubscriptionPlan;
 import java.time.LocalDateTime;
 

@@ -15,10 +15,9 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Global Exception Handler – Makes all errors return clean JSON
- * Required for production (no blank pages, clear messages for frontend)
- */
+ // Global Exception Handler – Makes all errors return clean JSON
+ // Required for production (no blank pages, clear messages for frontend)
+ 
 @ControllerAdvice
 public class GlobalExceptionHandler {
 

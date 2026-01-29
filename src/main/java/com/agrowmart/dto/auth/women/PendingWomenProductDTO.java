@@ -1,4 +1,3 @@
-// com.agrowmart.dto.auth.women.PendingWomenProductDTO.java
 package com.agrowmart.dto.auth.women;
 
 import java.math.BigDecimal;

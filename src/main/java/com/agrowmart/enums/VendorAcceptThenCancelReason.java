@@ -1,6 +1,5 @@
 package com.agrowmart.enums;
 
-
 public enum VendorAcceptThenCancelReason {
     STOCK_MISMATCHED,
     DELIVERY_PROBLEM,

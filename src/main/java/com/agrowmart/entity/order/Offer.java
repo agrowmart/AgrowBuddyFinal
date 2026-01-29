@@ -1,7 +1,5 @@
 package com.agrowmart.entity.order;
 
-
-
 import com.agrowmart.entity.User;
 import jakarta.persistence.*;
 
@@ -29,7 +27,7 @@ public class Offer {
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
  private Long id;
- //Added by Aakanksha-17/12/25
+
  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
  @JoinColumn(name = "offer_price_id")
  private OfferPrice price;

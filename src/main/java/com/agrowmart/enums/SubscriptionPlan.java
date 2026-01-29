@@ -1,7 +1,5 @@
 package com.agrowmart.enums;
 
-
-
 public enum SubscriptionPlan {
     NONE(0, 0, "Free - No products allowed"),
     STARTER(5, 499, "Starter - ₹499/month (max 5 products)"),

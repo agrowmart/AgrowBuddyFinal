@@ -48,7 +48,7 @@ public record CompleteProfileRequest(
  @RequestPart(required = false) MultipartFile shopPhoto,
  @RequestPart(required = false) MultipartFile shopCoverPhoto,
  @RequestPart(required = false) MultipartFile shopLicensePhoto,
- @RequestPart(required = false) String opensAt,   // "HH:mm"
- @RequestPart(required = false) String closesAt   // "HH:mm"
+ @RequestPart(required = false) String opensAt,   
+ @RequestPart(required = false) String closesAt   
  
 ) {}

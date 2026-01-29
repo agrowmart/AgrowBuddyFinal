@@ -1,8 +1,4 @@
 package com.agrowmart.repository.customer;
-
-//src/main/java/com/agrowmart/repository/customer/CustomerWishlistRepository.java
-
-
 import com.agrowmart.entity.customer.CustomerWishlist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;

@@ -67,10 +67,8 @@ public class Category {
 	}
 
 
-	
-	
 	// Category.java – add cascade
 	@OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
-	@JsonIgnore  // ← ADD THIS LINE
+	@JsonIgnore  
 	private List<Category> children = new ArrayList<>();
 }

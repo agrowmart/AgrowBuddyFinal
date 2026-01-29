@@ -1,8 +1,5 @@
 package com.agrowmart.entity.customer;
 
-//src/main/java/com/agrowmart/entity/customer/CustomerWishlist.java
-
-
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 

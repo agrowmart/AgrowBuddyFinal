@@ -1,8 +1,4 @@
-
-
-
 package com.agrowmart.controller;
-
 
 import com.agrowmart.dto.auth.*;
 import com.agrowmart.dto.auth.shop.ShopRequest;
@@ -48,59 +44,8 @@ public class AuthController {
     public ResponseEntity<User> register(@Valid RegisterRequest req) {
         return ResponseEntity.ok(authService.register(req));
     }
-    
-    
-    
- //======   
-//    // 2. Complete Profile (after register)
-//    @PutMapping(value = "/complete-profile", consumes = "multipart/form-data")
-//    public ResponseEntity<User> completeProfile(
-//    		
-//            @RequestParam(required = false) String businessName,
-//            @RequestParam(required = false) String address,
-//            @RequestParam(required = false) String city,
-//            @RequestParam(required = false) String state,
-//            @RequestParam(required = false) String country,
-//            @RequestParam(required = false) String postalCode,
-//            
-//            
-//            
-//            @RequestParam(required = false) String aadhaarNumber,
-//            @RequestParam(required = false) String panNumber,
-//            
-//
-//            @RequestParam(required = false) String udyamRegistrationNumber,
-//            
-//             
-//            
-//            @RequestParam(required = false) String gstCertificateNumber,
-//            @RequestParam(required = false) String tradeLicenseNumber,
-//            @RequestParam(required = false) String fssaiLicenseNumber,
-//            @RequestParam(required = false) String bankName,
-//            @RequestParam(required = false) String accountHolderName,
-//            @RequestParam(required = false) String bankAccountNumber,
-//            @RequestParam(required = false) String ifscCode,
-//            @RequestParam(required = false) String upiId,
-//        
-//            @RequestPart(required = false) MultipartFile fssaiLicenseFile,
-//            @RequestPart(required = false) MultipartFile photo,
-//            
-//            @RequestPart(required = false) MultipartFile aadhaarImage,
-//            @RequestPart(required = false) MultipartFile panImage,
-//            @RequestPart(required = false) MultipartFile udyamRegistrationImage,
-//            @AuthenticationPrincipal User currentUser
-//    ) {
-//        if (currentUser == null) return ResponseEntity.status(401).build();
-//        CompleteProfileRequest req = new CompleteProfileRequest(
-//                businessName, address, city, state, country, postalCode,
-//                aadhaarNumber, panNumber,udyamRegistrationNumber, gstCertificateNumber, tradeLicenseNumber, fssaiLicenseNumber,
-//                bankName, accountHolderName, bankAccountNumber, ifscCode, upiId,
-//                fssaiLicenseFile, photo,aadhaarImage,panImage,udyamRegistrationImage
-//        );
-//        return ResponseEntity.ok(authService.completeProfile(req, currentUser));
-//    }
-    
-    
+
+       
     @PutMapping(value = "/complete-profile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<User> completeProfile(
             // ── Profile fields ───────────────────────────────────────────────
@@ -198,7 +143,7 @@ public class AuthController {
     
     
     
-    // 3. Update Profile (NEW API - FULLY WORKING)
+    // 3. Update Profile (NEW API)
     @PutMapping(value = "/update-profile", consumes = "multipart/form-data")
     public ResponseEntity<User> updateProfile(
             @RequestParam(required = false) String businessName,
@@ -208,13 +153,9 @@ public class AuthController {
             @RequestParam(required = false) String country,
             @RequestParam(required = false) String postalCode,
             @RequestParam(required = false) String aadhaarNumber,
-            @RequestParam(required = false) String panNumber,
-            
+            @RequestParam(required = false) String panNumber, 
             @RequestParam(required = false) String udyamRegistrationNumber,
-            
-            
-            
-            
+                                
             @RequestParam(required = false) String gstCertificateNumber,
             @RequestParam(required = false) String tradeLicenseNumber,
             @RequestParam(required = false) String fssaiLicenseNumber,
@@ -270,13 +211,9 @@ public class AuthController {
         authService.forgotPassword(phone);
         return ResponseEntity.ok("OTP sent");
     }
-    
-    
-    
- // ──────────────────────────────────────────────
-    // 8. Get Current User (Vendor/Farmer) - Masked KYC
-    // ──────────────────────────────────────────────
-    // 6. Get Current User (UPDATED with percentage and onlineStatus)
+       
+    //  Get Current User (Vendor/Farmer) - Masked KYC
+   //  Get Current User (UPDATED with percentage and onlineStatus)
     @GetMapping("/me")
     public ResponseEntity<MeResponse> me(@AuthenticationPrincipal User user) {
         if (user == null) {
@@ -341,7 +278,7 @@ public class AuthController {
                 user.getIfscCode(),
                 user.getUpiId(),
 
-                // ✅ ROLE NAME (CORRECT POSITION)
+                //  ROLE NAME (CORRECT POSITION)
                 roleName,
 
                 // --- PROFILE ---
@@ -383,18 +320,7 @@ public class AuthController {
 
         return ResponseEntity.ok(profile);
     }
-    
-// // 6. Get Current User - SAFE VERSION (Masked KYC + Bank Account)
-//    @GetMapping("/me")
-//    public ResponseEntity<SafeProfileResponse> me(@AuthenticationPrincipal User user) {
-//        if (user == null) {
-//            return ResponseEntity.status(401).build();
-//        }
-//        int percentage = authService.calculateProfileCompletion(user);
-//        SafeProfileResponse response = new SafeProfileResponse(user, percentage);
-//        return ResponseEntity.ok(response);
-//    }
-    
+
     
     // 7. Upload Photo Only
     @PostMapping(value = "/upload-photo", consumes = "multipart/form-data")
@@ -434,7 +360,7 @@ public class AuthController {
     
  //--------------------------
     
-// // 2. Admin Only: View FULL KYC of any vendor (temporary 30 seconds)
+// Admin Only: View FULL KYC of any vendor (temporary 30 seconds)
 //    @GetMapping("/admin/vendor/{vendorId}/full-kyc")
 //    @PreAuthorize("hasAuthority('ADMIN')")
 //    public ResponseEntity<FullKycResponse> getFullKyc(

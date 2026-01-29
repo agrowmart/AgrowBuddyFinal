@@ -1,6 +1,5 @@
 package com.agrowmart.service;
 
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -26,12 +25,12 @@ public class Fast2SmsService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    /**
-     * Send OTP using Fast2SMS
-     * @param phone 10-digit number (without +91)
-     * @param otpCode 6-digit OTP
-     * @param purpose (optional - for logging)
-     */
+    
+     // Send OTP using Fast2SMS
+     // @param phone 10-digit number (without +91)
+     // @param otpCode 6-digit OTP
+     // @param purpose (optional - for logging)
+     
     public void sendOtp(String phone, String otpCode, String purpose) {
         // Clean phone number (remove +91 or spaces)
         String cleanPhone = phone.replace("+91", "").replace(" ", "").trim();
