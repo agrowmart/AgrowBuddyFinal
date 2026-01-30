@@ -309,8 +309,11 @@ public class AuthController {
                 shop != null ? shop.getShopLicense()      : null,
                 shop != null ? shop.getOpensAt()          : null,
                 shop != null ? shop.getClosesAt()         : null,
-                shop != null ? shop.isApproved()          : null,
-                shop != null ? shop.isActive()            : null,
+                // shop != null ? shop.isApproved()          : null,
+                // shop != null ? shop.isActive()            : null,
+			  		shop != null ? shop.isApproved() : false,    // or true — your business rule
+                				shop != null ? shop.isActive()   : false,
+
 
                 user.getCreatedAt() != null ? user.getCreatedAt().toString() : null,
                 user.getUpdatedAt() != null ? user.getUpdatedAt().toString() : null
