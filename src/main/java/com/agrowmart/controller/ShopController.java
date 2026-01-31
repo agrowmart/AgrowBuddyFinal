@@ -22,7 +22,7 @@ public class ShopController {
 
  private final ShopService shopService;
  
- // THIS is REQUIRED
+ // ✅ THIS is REQUIRED
  public ShopController(ShopService shopService) {
      this.shopService = shopService;
  }
@@ -34,7 +34,7 @@ public class ShopController {
          @RequestParam String shopName,
          @RequestParam String shopType,
          @RequestParam String shopAddress,
-         @RequestParam String workingHours,
+         @RequestParam String workingHoursJson ,
          @RequestParam(required = false) String shopDescription,
          @RequestParam String shopLicense,
 
@@ -57,7 +57,7 @@ public class ShopController {
              shopName,
              shopType,
              shopAddress,
-             workingHours,
+             workingHoursJson,
              shopDescription != null ? shopDescription : "",
              shopLicense,
              openTime,
@@ -80,7 +80,7 @@ public class ShopController {
          @RequestParam String shopName,
          @RequestParam String shopType,
          @RequestParam String shopAddress,
-         @RequestParam String workingHours,
+         @RequestParam String workingHoursJson,
          @RequestParam(required = false) String shopDescription,
          @RequestParam String shopLicense,
 
@@ -101,7 +101,7 @@ public class ShopController {
              shopName,
              shopType,
              shopAddress,
-             workingHours,
+             workingHoursJson,
              shopDescription != null ? shopDescription : "",
              shopLicense,
              openTime,
