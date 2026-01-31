@@ -1,7 +1,9 @@
+
 package com.agrowmart.controller;
 
 import com.agrowmart.dto.auth.AgriProduct.AgriProductCreateDTO;
 import com.agrowmart.dto.auth.AgriProduct.AgriProductResponseDTO;
+import com.agrowmart.dto.auth.AgriProduct.ProductVisibilityDTO;
 import com.agrowmart.service.AgriProductService;
 
 import jakarta.validation.Valid;
@@ -21,7 +23,7 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/api/v1/agri/products")  // Fixed path
+@RequestMapping("/api/v1/agri/products")  // ← Fixed path
 public class AgriProductController {
 
     @Autowired
@@ -114,6 +116,17 @@ public class AgriProductController {
     public ResponseEntity<List<AgriProductResponseDTO>> getMy(Authentication auth) {
         return ResponseEntity.ok(service.getMyProducts(auth));
     }
+//
+//    // Keep JSON update for now (safe & simple)
+//    @PutMapping(value = "/{id}", consumes = "application/json")
+//    @PreAuthorize("hasAuthority('AGRI')")
+//    public ResponseEntity<AgriProductResponseDTO> update(
+//            @PathVariable Long id,
+//            @Valid @RequestBody AgriProductCreateDTO dto,
+//            Authentication auth) {
+//        return ResponseEntity.ok(service.update(id, dto, auth));
+//    }
+    
     
  // In AgriProductController.java
 
@@ -193,6 +206,20 @@ public class AgriProductController {
     @GetMapping("/search")
     @PreAuthorize("permitAll()")
     public ResponseEntity<List<AgriProductResponseDTO>> search(@RequestParam String keyword) {
-        return ResponseEntity.ok(service.search(keyword));  //  Fixed
+        return ResponseEntity.ok(service.search(keyword));  // ← Fixed
     }
+    
+    
+ // Add this method inside AgriProductController
+
+    @PatchMapping("/{id}/visibility")
+    @PreAuthorize("hasAuthority('AGRI')")
+    public ResponseEntity<AgriProductResponseDTO> toggleVisibility(
+            @PathVariable Long id,
+            @RequestBody ProductVisibilityDTO dto,
+            Authentication auth) {
+
+        AgriProductResponseDTO updated = service.updateVisibility(id, dto.visible(), auth);
+        return ResponseEntity.ok(updated);
+    }  
 }
