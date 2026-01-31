@@ -81,11 +81,14 @@ public class AdminSellerService {
                             ? u.getAccountStatus().name()
                             : AccountStatus.PENDING.name());
             map.put("createdAt", u.getCreatedAt());
-          
+            //Added by Aakanksha-22/01/2026
+         // ✅ Vendor Type (ROLE)
             map.put("vendorType",
                     u.getRole() != null ? u.getRole().getName() : null);
             
 
+            // ✅ Subscription info
+         // ✅ FIX: get active subscription properly
             Subscription activeSub = u.getActiveSubscription();
 
             map.put("hasActiveSubscription", activeSub != null);
@@ -170,7 +173,7 @@ public class AdminSellerService {
             shopDto.setShopType(shop.getShopType());
             shopDto.setShopAddress(shop.getShopAddress());
             shopDto.setDescription(shop.getShopDescription());
-            shopDto.setWorkingHours(shop.getWorkingHours());
+            shopDto.setWorkingHours(shop.getWorkingHoursJson());;
             shopDto.setShopPhoto(shop.getShopPhoto());
             shopDto.setShopCoverPhoto(shop.getShopCoverPhoto());
             shopDto.setShopLicense(shop.getShopLicense());
@@ -178,12 +181,12 @@ public class AdminSellerService {
             shopDto.setApproved(shop.isApproved());
             shopDto.setActive(shop.isActive());
 
-            //  Vendor Type (Role)
+            // ✅ Vendor Type (Role)
             shopDto.setVendorType(
                     user.getRole() != null ? user.getRole().getName() : null
             );
 
-            //  GST Number
+            // ✅ GST Number
             shopDto.setGstCertificateNumber(user.getGstCertificateNumber());
 
             dto.setShop(shopDto);
@@ -193,37 +196,39 @@ public class AdminSellerService {
     }
 
 
-    // ================= APPROVE VENDOR =================
+    // ================= APPROVE VENDOR (🔥 MAIN FIX) =================
     @Transactional
     public void approveVendor(Long vendorId) {
 
         User user = userRepository.findById(vendorId)
                 .orElseThrow(() -> new RuntimeException("Vendor not found"));
 
-        //  ACCOUNT STATUS
+        // ✅ ACCOUNT STATUS
         user.setAccountStatus(AccountStatus.APPROVED);
         user.setStatusReason("Approved by admin");
         user.setStatusUpdatedAt(LocalDateTime.now());
 
-        //  DOCUMENT APPROVALS
+        // ✅ DOCUMENT APPROVALS
         user.setAadhaarStatus(DocumentStatus.APPROVED);
         user.setPanStatus(DocumentStatus.APPROVED);
         user.setUdhyamStatus(DocumentStatus.APPROVED);
 
-        //  SHOP (must exist)
+        // ✅ SHOP (must exist)
         Shop shop = shopRepository.findByUserId(vendorId)
                 .orElseThrow(() -> new RuntimeException("Shop not found"));
 
-        //  SHOP LICENSE PHOTO APPROVAL
+        // ✅ SHOP LICENSE PHOTO APPROVAL
         shop.setShopLicensePhotoStatus(DocumentStatus.APPROVED);
 
-        //  CENTRALIZED STATE CONTROL
+        // ✅ CENTRALIZED STATE CONTROL
         syncShopWithVendor(user, shop);
 
         userRepository.save(user);
         shopRepository.save(shop);
     }
- 
+
+
+        // 21 Jan 
         
     private void syncShopWithVendor(User vendor, Shop shop) {
         if (vendor.getAccountStatus() == AccountStatus.APPROVED) {
@@ -233,9 +238,94 @@ public class AdminSellerService {
             shop.setApproved(false);
             shop.setActive(false);
         }
+//        shopRepository.save(shop);
     }
 
-
+    // ================= REJECT =================
+//    public void rejectVendor(Long vendorId, String reason) {
+//
+//        User user = userRepository.findById(vendorId)
+//                .orElseThrow(() -> new RuntimeException("Vendor not found"));
+//
+//        user.setAccountStatus(AccountStatus.REJECTED);
+//        user.setStatusReason(reason);
+//        user.setStatusUpdatedAt(LocalDateTime.now());
+//
+//        shopRepository.findByUserId(vendorId).ifPresent(shop -> {
+//            shop.setApproved(false);
+//            shop.setActive(false);
+//            shopRepository.findByUserId(vendorId)
+//            .ifPresent(foundShop -> syncShopWithVendor(user, foundShop));
+//        });
+//
+//        userRepository.save(user);
+//    }
+//    @Transactional
+//    public void rejectVendor(Long vendorId, String reason) {
+//
+//        User user = userRepository.findById(vendorId)
+//                .orElseThrow(() -> new RuntimeException("Vendor not found"));
+//
+//        // ✅ Update vendor status
+//        user.setAccountStatus(AccountStatus.REJECTED);
+//        user.setStatusReason(reason);
+//        user.setStatusUpdatedAt(LocalDateTime.now());
+//
+//        // ✅ Sync shop state with vendor
+//        shopRepository.findByUserId(vendorId)
+//                .ifPresent(shop -> {
+//                    syncShopWithVendor(user, shop);
+//                    shopRepository.save(shop);
+//                });
+//
+//        userRepository.save(user);
+//    }
+//    @Transactional
+//    public void rejectVendor(Long vendorId, @Valid DocumentVerificationRequestDTO request) {
+//
+//        User user = userRepository.findById(vendorId)
+//                .orElseThrow(() -> new RuntimeException("Vendor not found"));
+//
+//        user.setAccountStatus(AccountStatus.REJECTED);
+//        user.setStatusReason(request);
+//        user.setStatusUpdatedAt(LocalDateTime.now());
+//
+//        // ================= SET DOCUMENT STATUS BASED ON REASON =================
+//        switch (request) {
+//            case "AADHAAR_MISMATCH":
+//                user.setAadhaarStatus(DocumentStatus.REJECTED);
+//                break;
+//            case "PAN_MISMATCH":
+//                user.setPanStatus(DocumentStatus.REJECTED);
+//                break;
+//            case "UDYAM_MISMATCH":
+//                user.setUdhyamStatus(DocumentStatus.REJECTED);
+//                break;
+//            case "SHOP_LICENSE_MISMATCH":
+//                shopRepository.findByUserId(vendorId).ifPresent(shop -> 
+//                    shop.setShopLicensePhotoStatus(DocumentStatus.REJECTED)
+//                );
+//                break;
+//            default:
+//                // If reason is OTHER or general, reject all
+//                user.setAadhaarStatus(DocumentStatus.REJECTED);
+//                user.setPanStatus(DocumentStatus.REJECTED);
+//                user.setUdhyamStatus(DocumentStatus.REJECTED);
+//                shopRepository.findByUserId(vendorId).ifPresent(shop -> 
+//                    shop.setShopLicensePhotoStatus(DocumentStatus.REJECTED)
+//                );
+//                break;
+//        }
+//
+//        // ================= SYNC SHOP STATUS =================
+//        shopRepository.findByUserId(vendorId)
+//                .ifPresent(shop -> {
+//                    syncShopWithVendor(user, shop);
+//                    shopRepository.save(shop);
+//                });
+//
+//        userRepository.save(user);
+//    }
     @Transactional
     public void rejectVendor(Long vendorId, DocumentVerificationRequestDTO request) {
 
@@ -276,7 +366,7 @@ public class AdminSellerService {
                     shop.setShopLicensePhotoStatus(DocumentStatus.REJECTED);
 
             case OTHER -> {
-            
+                // no specific document rejected
             }
         }
 
@@ -289,6 +379,26 @@ public class AdminSellerService {
         shopRepository.save(shop);
     }
 
+
+
+    // ================= BLOCK =================
+//    public void blockVendor(Long id) {
+//        User user = userRepository.findById(id)
+//                .orElseThrow(() -> new RuntimeException("Vendor not found"));
+//
+//        user.setAccountStatus(AccountStatus.BLOCKED);
+//        user.setStatusReason("Blocked by admin");
+//        user.setStatusUpdatedAt(LocalDateTime.now());
+//
+//        shopRepository.findByUserId(id).ifPresent(shop -> {
+//            shop.setApproved(false);
+//            shop.setActive(false);
+//            shopRepository.findByUserId(vendorId)
+//            .ifPresent(foundShop -> syncShopWithVendor(user, foundShop));
+//        });
+//
+//        userRepository.save(user);
+//    }
     @Transactional
     public void blockVendor(Long vendorId) {
 
@@ -308,6 +418,25 @@ public class AdminSellerService {
         userRepository.save(user);
     }
 
+    // ================= UNBLOCK =================
+//    public void unblockVendor(Long id) {
+//
+//        User user = userRepository.findById(id)
+//                .orElseThrow(() -> new RuntimeException("Vendor not found"));
+//
+//        user.setAccountStatus(AccountStatus.APPROVED);
+//        user.setStatusReason("Unblocked by admin");
+//        user.setStatusUpdatedAt(LocalDateTime.now());
+//
+//        shopRepository.findByUserId(id).ifPresent(shop -> {
+//            shop.setApproved(true);
+//            shop.setActive(true);
+//            shopRepository.save(shop);
+//        });
+//
+//        userRepository.save(user);
+//    }
+//}
     @Transactional
     public void unblockVendor(Long vendorId) {
 
