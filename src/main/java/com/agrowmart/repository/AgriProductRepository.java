@@ -21,4 +21,12 @@ public interface AgriProductRepository extends JpaRepository<BaseAgriProduct, Lo
     List<BaseAgriProduct> search(@Param("keyword") String keyword);
 
 	long countByVendor(User user);
+	
+	List<BaseAgriProduct> findByVisibleToCustomersTrue();
+
+	@Query("SELECT p FROM BaseAgriProduct p " +
+	       "WHERE p.visibleToCustomers = true " +
+	       "AND (LOWER(p.AgriproductName) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
+	       "     OR LOWER(p.Agridescription) LIKE LOWER(CONCAT('%', :keyword, '%')))")
+	List<BaseAgriProduct> searchVisible(@Param("keyword") String keyword);
 }
