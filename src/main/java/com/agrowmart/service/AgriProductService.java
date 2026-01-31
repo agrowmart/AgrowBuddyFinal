@@ -1,5 +1,4 @@
 
-
 package com.agrowmart.service;
 
 import com.agrowmart.dto.auth.AgriProduct.AgriProductCreateDTO;
@@ -115,6 +114,7 @@ public class AgriProductService {
                 p.getAgrilicenseNumber(),
                 p.getAgrilicenseType(),
                 p.getVerified(),
+                p.isVisibleToCustomers(),
                 mapVendor(p.getVendor()),
                 fertilizerType, nutrientComposition, fcoNumber,
                 seedscropType, seedsvariety, seedClass,
@@ -396,11 +396,13 @@ public class AgriProductService {
     // Other methods (unchanged)
     // ==================================================================
  // read-only methods can have readOnly = true
+   
     @Transactional(readOnly = true)
     public List<AgriProductResponseDTO> getAll() {
-        return repository.findAll().stream()
-                .map(this::entityToDto)
-                .toList();
+        return repository.findByVisibleToCustomersTrue()
+            .stream()
+            .map(this::entityToDto)
+            .toList();
     }
  // read-only methods can have readOnly = true
     @Transactional(readOnly = true)
@@ -410,6 +412,7 @@ public class AgriProductService {
                 .map(this::entityToDto)
                 .toList();
     }
+    
  // read-only methods can have readOnly = true
     @Transactional(readOnly = true)
     public AgriProductResponseDTO getById(Long id) {
@@ -429,9 +432,29 @@ public class AgriProductService {
 
     
     
+    @Transactional(readOnly = true)
     public List<AgriProductResponseDTO> search(String keyword) {
-        return repository.search(keyword).stream()
-                .map(this::entityToDto)
-                .toList();
+        return repository.searchVisible(keyword)
+            .stream()
+            .map(this::entityToDto)
+            .toList();
     }
-}
+ //-----------------   
+    @Transactional
+    public AgriProductResponseDTO updateVisibility(Long id, boolean visible, Authentication auth) {
+        User vendor = getCurrentVendor(auth);
+        
+        // Only owner can change visibility
+        BaseAgriProduct product = repository.findByIdAndVendor(id, vendor)
+            .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, 
+                "Product not found or you are not the owner"
+            ));
+
+        product.setVisibleToCustomers(visible);
+        
+        BaseAgriProduct saved = repository.save(product);
+        
+        return entityToDto(saved);
+    }
+} 
