@@ -1,5 +1,7 @@
 package com.agrowmart.dto.auth.shop;
 
+
+
 import java.time.LocalTime;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -8,7 +10,8 @@ public record ShopRequest(
  String shopName,
  String shopType,
  String shopAddress,
- String workingHours,
+//New
+ String workingHoursJson,       // ← send JSON string from frontend
  String shopDescription,
  String shopLicense,
  
