@@ -21,6 +21,8 @@ public record AgriProductResponseDTO(
     String AgrilicenseNumber,
     String AgrilicenseType,
     Boolean verified,
+ // In AgriProductResponseDTO add:
+    Boolean visibleToCustomers,
 
     AgriVendorInfoDTO vendor,
 
