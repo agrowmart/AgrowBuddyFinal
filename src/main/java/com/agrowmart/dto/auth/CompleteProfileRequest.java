@@ -42,13 +42,17 @@ public record CompleteProfileRequest(
  @RequestPart(required = false) String shopName,
  @RequestPart(required = false) String shopType,
  @RequestPart(required = false) String shopAddress,
- @RequestPart(required = false) String workingHours,
+
+ 
+//New
+ @RequestPart(required = false) String workingHoursJson,
+ 
  @RequestPart(required = false) String shopDescription,
  @RequestPart(required = false) String shopLicense,
  @RequestPart(required = false) MultipartFile shopPhoto,
  @RequestPart(required = false) MultipartFile shopCoverPhoto,
  @RequestPart(required = false) MultipartFile shopLicensePhoto,
- @RequestPart(required = false) String opensAt,   
- @RequestPart(required = false) String closesAt   
+ @RequestPart(required = false) String opensAt,   // "HH:mm"
+ @RequestPart(required = false) String closesAt   // "HH:mm"
  
 ) {}
